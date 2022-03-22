@@ -85,3 +85,40 @@ prediction = aaa.predict('테스트용 문제')
 모듈화 자주하고 파라미터만 돌려막기로 능률 향상
 
 파이썬 '필드 column' 줘서 모듈화한 식에 때려박기 -> 일반적인 사용 가능
+
+---------------- 0322
+데이터 읽어오기
+-> 표시하기
+-> 학습용/테스트용 나누기
+-> 머신러닝 모델 학습시키기
+-> 테스트하기(예측, 분류)
+ = 읽 표 나 학 테
+
+gil = DecisionTreeClassifier()
+gil.fit('학습용 문제', '정답')
+prediction = gil.predict('테스트용 문제')
+
+읽 ::
+csv 파일 읽기 :
+import pandas as pd
+data = pd.read_csv("asdf.csv")
+
+표 ::
+점 찍기 :
+plot(data, "Height", "Weight", "Sex")
+바이올린 형태 분포도 :
+violinplot(data, "Height", "Sex")
+
+나 ::
+학습용 80%, 테스트용 20%로 데이터 나누기 :
+train, test = split(data, 0.8)
+학습 입력 & 정답 :
+train_x = train[['Height', 'FeetSize', 'Weight']]
+train_y = train.Sex
+테스트 입력 & 정답 :
+test_x = test[['Height', 'FeetSize', 'Weight']]
+test_y = test.Sex
+
+---------------- 0323
+학 ::
+
