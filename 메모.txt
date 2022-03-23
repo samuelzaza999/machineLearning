@@ -98,18 +98,21 @@ gil = DecisionTreeClassifier()
 gil.fit('학습용 문제', '정답')
 prediction = gil.predict('테스트용 문제')
 
-읽 ::
+
+> Female/Male Classification_ML_Simple
+
+읽기 ::
 csv 파일 읽기 :
 import pandas as pd
 data = pd.read_csv("asdf.csv")
 
-표 ::
+표시 ::
 점 찍기 :
 plot(data, "Height", "Weight", "Sex")
 바이올린 형태 분포도 :
 violinplot(data, "Height", "Sex")
 
-나 ::
+나누기 ::
 학습용 80%, 테스트용 20%로 데이터 나누기 :
 train, test = split(data, 0.8)
 학습 입력 & 정답 :
@@ -120,5 +123,67 @@ test_x = test[['Height', 'FeetSize', 'Weight']]
 test_y = test.Sex
 
 ---------------- 0323
-학 ::
+학습 ::
+정답 5개 호출 :
+test_x.head(5)
+학습시키기 & 예측하기 :
+from sklearn import svm
+from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
+gil = svm.SVC()
+gil.fit(train_x, train_y)
+prediction = gil.predict(test_x)
 
+테스트 ::
+print('인식률 : ', metrics.accuracy_score(prediction, test_y) * 100)
+gil = LogisticRegression()
+gil = KNeighborsClassifier(n_neighbors = 3)
+
+
+> plant_diary_original_simple
+
+데이터 처리 모듈 :
+import pandas as pd
+테이터 시각화 모듈 :
+import matplotlib.pyplot as plt
+import seaborn as sns
+데이터 분할 모듈 :
+from sklearn.model_selection import train_test_split
+
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.linear_model import LinearRegression
+from sklearn.neighbors import KNeighborsRegressor
+from sklearn.ensemble import RandomForestRegressor
+
+나누기 ::
+train, test = split(data, 0.8)
+train_x = train[['day']]
+train_y = train.height
+test_x = test[['day']]
+test_y = test.height
+
+학습(4가지) ::
+취사선택 :
+gil = LinearRegression()
+gil = KNeighborsRegressor(n_neighbors = 2)
+gil = RandomForestRegressor(n_estimators = 28, random_state = 0)
+gil = DecisionTreeRegressor(random_state = 0)LinearRegression()
+이후 공통 사항 :
+gil.fit(train_x, train_y)
+score = gil.score(test_x, test_y)
+print('score : ', format(score, '.3f'))
+
+테스트 ::
+prediction = gil.predict(test_x)
+print('예상 : ', prediction)
+print('정답 : ', test_y)
+
+
+★머신러닝의 핵심 ::
+종류 이거 or 저거? : 분류
+-> 비가 올까 안 올까, 더울까 추울까, 학년이 어떻게 될까
+값이 얼만큼 될까? : 예측
+-> 몸무게가 어떻게 될까, 내일 온도는 어떨까
+
+
+머신러닝 중에서 사람의 뇌를 모방 : 딥러닝.
