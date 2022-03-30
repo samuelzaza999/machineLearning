@@ -101,18 +101,18 @@ prediction = gil.predict('테스트용 문제')
 
 > Female/Male Classification_ML_Simple
 
-읽기 ::
+읽기 >
 csv 파일 읽기 :
 import pandas as pd
 data = pd.read_csv("asdf.csv")
 
-표시 ::
+표시 >
 점 찍기 :
 plot(data, "Height", "Weight", "Sex")
 바이올린 형태 분포도 :
 violinplot(data, "Height", "Sex")
 
-나누기 ::
+나누기 >
 학습용 80%, 테스트용 20%로 데이터 나누기 :
 train, test = split(data, 0.8)
 학습 입력 & 정답 :
@@ -123,7 +123,7 @@ test_x = test[['Height', 'FeetSize', 'Weight']]
 test_y = test.Sex
 
 ---------------- 0323
-학습 ::
+학습 >
 정답 5개 호출 :
 test_x.head(5)
 학습시키기 & 예측하기 :
@@ -134,7 +134,7 @@ gil = svm.SVC()
 gil.fit(train_x, train_y)
 prediction = gil.predict(test_x)
 
-테스트 ::
+테스트 >
 print('인식률 : ', metrics.accuracy_score(prediction, test_y) * 100)
 gil = LogisticRegression()
 gil = KNeighborsClassifier(n_neighbors = 3)
@@ -155,14 +155,14 @@ from sklearn.linear_model import LinearRegression
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.ensemble import RandomForestRegressor
 
-나누기 ::
+나누기 >
 train, test = split(data, 0.8)
 train_x = train[['day']]
 train_y = train.height
 test_x = test[['day']]
 test_y = test.height
 
-학습(4가지) ::
+학습(4가지) >
 취사선택 :
 gil = LinearRegression()
 gil = KNeighborsRegressor(n_neighbors = 2)
@@ -173,7 +173,7 @@ gil.fit(train_x, train_y)
 score = gil.score(test_x, test_y)
 print('score : ', format(score, '.3f'))
 
-테스트 ::
+테스트 >
 prediction = gil.predict(test_x)
 print('예상 : ', prediction)
 print('정답 : ', test_y)
@@ -189,8 +189,50 @@ print('정답 : ', test_y)
 머신러닝 중에서 사람의 뇌를 모방 : 딥러닝.
 
 -------------- 0329
-딥러닝 :: 시냅스의 구현.
-★시냅스에서 신경전달물질이 수용체로 이동, 물질이 많이 나올 수록 전달되는 전기신호가 강해진다.
+딥러닝 :: 시냅스(연결부위, 신경망)의 구현.
+★시냅스에서 신경전달물질(단백질)이 수용체로 이동, 물질이 많이 나올 수록 전달되는 전기신호가 강해진다.
 뇌는 신호가 발생 or X로만 구분.
 신호 * 신경전달물질의 양 = 전기신호 -> 특정 레벨 이상일 때만 발생 판정 -> 신경세포 핵에서 전기신호 합치기
-신경전달물질의 세팅에 따라 전기신호가 다르게 발생. 걷는 용도, 기억하는 용도 등
+신경전달물질의 설정에 따라 전기신호가 다르게 발생. 걷는 용도, 기억하는 용도 등
+
+---------------- 0330
+신호 -> 신경전달물질 -> 물질이 수용체로 이동 -> 반대편 뉴런 자극 -> 신경전달물질을 원래 자리 회수 -> 반복
+
+뇌 문제 :
+시냅스 작동 X -> 마비, 치매 등
+= 시냅스 설정 X, 신경전달물질의 양 제대로 설정 X
+-> 딥러닝은 신경전달물질의 양을 바꾸는 프로그래밍.
+
+습관 바꾸기? :
+부정적 이미지 심기. 고통 주입. -> 신경전달물질의 양 변화로 기억하기.
+= 뇌내 학습의 원리? : 행복은 늘리고 고통은 줄이는 방향으로.
+
+그림책 : 입력을 주고 정답을 알려준다. -> 학습으로 신경전달물질 설정하기.
+gil.fit(<그림>, '오리')
+
+
+뉴런의 동작(출력) ::
+신경세포가 단 하나라 가정. (w=1)
+신경세포 출력 h = 입력 x * 연결강도(신경전달물질 양 : 단절/약/강) w
+w=1인 뉴런 : h = 1x
+
+★학습이란? :
+신경전달물질의 양(w)을 조절하는 것.
+
+ex)
+1시간(x) 공부하면 1시간(ground truth) 게임.
+그럼 4시간 공부에 몇 시간 게임할 수 있을지(prediction) w값 구하기.
+h = w * x(=1)
+입력과 정답이 정해졌다면 강도의 변화에 따라 오차를 찾아내(야단) 줄여나간다.
+
+실제로는 여러 개의 입력. 입력의 수만큼 연결도 존재.
+-> 각 입력마다 시냅스의 가중치를 곱한 뒤 모두 더한다. (weighted sum)
+
+뉴런은 weighted sum이 일정 값 이상일 때만 신호 발생. (계단 함수)
+= 특정 값(T) 이상이면 ON(1), 아니면 OFF(0)
+신경세포 핵에서 weighted sum & 계단 함수 역할.
+
+★시험 : 뉴런 그리기.
+h = 1x
+h = x1 + 2x2 + x3 + 3x4
+h = 1 (if x1 + 2x2 + x3 + 3x4 > T) / 0 (otherwise)
