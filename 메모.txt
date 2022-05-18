@@ -477,3 +477,10 @@ DR 기술로 시간대 전기 사용 혜택 주려면 사용량 예측 필요.
 입력 2개 되면 OR 판정 -> 조건 하나만 만족해도 1, 아니면 0
 -> 결정경계 w1x1 + w2x2 + b = 0
 OR 뿐만 아니라 NAND 등 사용. (모든 디바이스 구현 가능)
+
+
+https://github.com/mxstbr/login-flow
+https://kimyang-sun.tistory.com/entry/%EB%A6%AC%EC%95%A1%ED%8A%B8-%EB%A6%AC%EB%8D%95%EC%8A%A4-%ED%88%B4%ED%82%B7-%EB%A6%AC%EB%8D%95%EC%8A%A4-%EC%82%AC%EA%B0%80-React-Redux-Toolkit-Redux-Saga-TypeScript-Nextjs
+https://hojung-testbench.tistory.com/42
+
+
