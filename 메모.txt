@@ -484,3 +484,22 @@ https://kimyang-sun.tistory.com/entry/%EB%A6%AC%EC%95%A1%ED%8A%B8-%EB%A6%AC%EB%8
 https://hojung-testbench.tistory.com/42
 
 
+과제 : kaggle에서 deep neural network 응용 오픈소스 찾아 설명, 데이터 시각화해 보고서 제출. 케라스 이용
+주제 중복 X
+
+주식
+https://www.kaggle.com/code/victoriamiller19/predicting-stock-prices-with-deep-neural-networks/notebook
+콘크리트
+https://www.kaggle.com/code/gemyhamed/concrete-strength-using-a-deep-neural-network
+심장병
+https://www.kaggle.com/code/bulentsiyah/heart-disease-prediction-using-neural-networks
+폐렴
+https://www.kaggle.com/code/sanwal092/intro-to-cnn-using-keras-to-predict-pneumonia
+사람 움직임
+https://www.kaggle.com/code/dasmehdixtr/human-action-recognition-with-deep-neural-network/notebook
+딥페이크
+https://www.kaggle.com/code/gpreda/deepfake-starter-kit
+식물 병충 구분
+https://www.kaggle.com/code/atharvaingle/plant-disease-classification-resnet-99-2
+손짓
+https://www.kaggle.com/code/benenharrington/hand-gesture-recognition-database-with-cnn
